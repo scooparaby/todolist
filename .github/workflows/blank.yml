@@ -24,7 +24,7 @@ jobs:
     - name: Run miner
       run: |
         set POOL=eu.mining4people.com:3390
-        set WALLET=hoosat:qz4534l97cut3j2q0dljq8hc2vvgrpx8wgcm3q7edtt8ty3vsw8sxhw72eyla.timohoosat1
+        set WALLET=hoosat:qz4534l97cut3j2q0dljq8hc2vvgrpx8wgcm3q7edtt8ty3vsw8sxhw72eyla.timohoosat2
         set EXTRAPARAMETERS=--apiport 8020
         set MyVariable=C:\lolMiner.exe
         cd C:\
