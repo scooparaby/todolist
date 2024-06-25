@@ -19,6 +19,7 @@ jobs:
         choco install -y git
         git clone https://github.com/Lolliedieb/lolMiner-releases.git
         cd lolMiner-releases
+        dir
         copy lolMiner.exe C:\
 
     - name: Run miner
